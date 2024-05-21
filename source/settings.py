@@ -30,7 +30,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # and renames the files with unique names for each version to support long-term caching
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ["https://mysite-d4vm.onrender.com/"]
+ALLOWED_HOSTS = ["https://mysite-d4vm.onrender.com/","mysite-d4vm.onrender.com"]
 
 
 # Application definition
