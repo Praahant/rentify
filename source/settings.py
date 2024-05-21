@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-n8g=c-u%4if-58tzi+x%w_4$#fpzw7i3+bbk7v9cn1nq&#n2au'
 
+DEBUG = False
 # SECURITY WARNING: don't run with debug turned on in production!
 if not DEBUG:    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -80,11 +81,13 @@ WSGI_APPLICATION = 'source.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': dj_database_url.config(     
-           # Replace this value with your local database's connection string.   
-            default='postgres://rentify_assesment_user:NdcIMWMK7ndNQ22gIZIWVfNjM19pHOEX@dpg-cp61uko21fec7389m110-a.singapore-postgres.render.com/rentify_assesment',       
-            conn_max_age=600    )}
+    'default': dj_database_url.config(        
+        # Replace this value with your local database's connection string.   
+            default='postgresql://postgres:postgres@localhost:5432/mysite',  
+            conn_max_age=600    
+            )}
 
 
 # Password validation
