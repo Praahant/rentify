@@ -1,0 +1,26 @@
+{% extends '../base.html' %}
+{% block content %}
+{% include '../navbar.html' %}
+<div class="container mx-auto py-8">
+    <h1 class="text-4xl font-bold text-center mb-8">Property Listings</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for property in property %}
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-2">{{ property.place }}</h2>
+                <p class="text-gray-700">Area: {{ property.area }} sq ft</p>
+                <p class="text-gray-700">Location: {{ property.location }}</p>
+                <p class="text-gray-700">Bedrooms: {{ property.bedrooms }}</p>
+                <p class="text-gray-700">Bathrooms: {{ property.bathrooms }}</p>
+                <p class="text-gray-700">Hospitals Nearby: {{ property.hospitals_nearby|yesno:"Yes,No" }}</p>
+                <p class="text-gray-700">Colleges Nearby: {{ property.colleges_nearby|yesno:"Yes,No" }}</p>
+            </div>
+            <div class="p-4 bg-gray-100">
+                <a href="{% url 'property_update' property.id %}" class="text-blue-500 hover:text-blue-700">Update</a>
+                <a href="{% url 'property_delete' property.id %}" class="text-red-500 hover:text-red-700 ml-4">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

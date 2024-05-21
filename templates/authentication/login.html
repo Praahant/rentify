@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+        <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Login</h2>
+        <form method="POST" class="space-y-6">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-semibold">Email</label>
+                <input type="email" id="email" name="email" required class="mt-2 p-3 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 text-sm font-semibold">Password</label>
+                <input type="password" id="password" name="password" required class="mt-2 p-3 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-300">Login</button>
+            <div class="text-center mt-4">
+                <p class="text-gray-600">Don't have an account? <a href="{% url 'register' %}" class="text-blue-500 hover:underline">Register</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock content %}

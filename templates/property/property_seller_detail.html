@@ -1,0 +1,27 @@
+{% extends '../base.html' %}
+{% block content %}
+{% include '../navbar.html' %}
+<div class="container mx-auto mt-10">
+    <h1 class="text-2xl font-bold mb-4 m-5">User Detail Listing</h1>
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden md:max-w-2xl">
+        <div class="md:flex">
+          
+          <div class="p-8">
+            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Username</div>
+            <p class="mt-2 text-gray-900">{{ owner.first_name }}</p>
+            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold mt-4">Email</div>
+            <p class="mt-2 text-gray-900">{{ owner.email }}</p>
+            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold mt-4">Phone</div>
+            <p class="mt-2 text-gray-900">{{ owner.phone_number }}</p>
+            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold mt-4">Address</div>
+            <p class="mt-2 text-gray-900">{{ property.location }}</p>
+          </div>
+        </div>
+      </div>
+      
+    
+</div>
+
+{% endblock content %}
+
+</html>

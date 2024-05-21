@@ -1,0 +1,61 @@
+{% extends "../base.html" %}
+{% block title %}
+    Property List
+{% endblock title %}
+{% block content %}
+    <body class="bg-gray-100">
+        {% include "../navbar.html" %}
+        <div class="container mx-auto py-8">
+            <h1 class="text-3xl font-bold mb-8 text-center">Available Properties</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 m-5">
+                <!-- Property Card 1 -->
+                {% for property in properties %}
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden shadow-md">
+                        <div class="p-4">
+                            <h2 class="text-lg font-semibold mb-2">{{ property.place }}</h2>
+                            <p class="text-gray-600 mb-4">Location: {{ property.location }}</p>
+                            <p class="text-gray-600 mb-4">Bedroom: {{ property.bedrooms }}</p>
+                            <p class="text-gray-600 mb-4">Bathroom: {{ property.bathrooms }}</p>
+                            <p class="text-gray-600 mb-4">Area: {{ property.area }}</p>
+                            <p class="text-gray-600 mb-4">College Nearby: {{ property.colleges_nearby }}</p>
+                            <p class="text-gray-600 mb-4">Hospital Nearby: {{ property.hospitals_nearby }}</p>
+                            <a href={% url 'seller_detail' property.pk %}>
+                                <button 
+                                        class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+                                    Rent
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+                <!-- Repeat more property cards as needed -->
+            </div>
+            <!-- Modal -->
+            <div id="propertyModal"
+                 class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+                    <h2 id="modalTitle" class="text-lg font-semibold mb-4"></h2>
+                    <p id="modalDescription" class="text-gray-600 mb-6"></p>
+                    <button onclick="closeModal()"
+                            class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">Close</button>
+                </div>
+            </div>
+        </div>
+        <script>
+        function openModal(propertyId) {
+            const modal = document.getElementById('propertyModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            modalTitle.innerText = 'Property ' + propertyId;
+            modalDescription.innerText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget orci sodales, suscipit eros eget, semper dolor.';
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('propertyModal');
+            modal.classList.add('hidden');
+        }
+        </script>
+    </body>
+{% endblock content %}
