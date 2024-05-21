@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-n8g=c-u%4if-58tzi+x%w_4$#fpzw7i3+bbk7v9cn1nq&#n2au'
 
-DEBUG = False
+DEBUG = True
 # SECURITY WARNING: don't run with debug turned on in production!
 if not DEBUG:    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
